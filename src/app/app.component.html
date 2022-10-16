@@ -1,7 +1,7 @@
-<form [formGroup]="fg" (ngSubmit)="submit()" #localForm="ngForm">
+<form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
   <!-- firstname -->
   <label>Firstname</label>
-  <input type="text" formControlName="firstname" name="ngModel" />
+  <input type="text" formControlName="firstname" />
   <div class="validation-error" *ngIf="firstname.errors?.['required']">
     Field is required
   </div>
@@ -11,7 +11,7 @@
   <label>Lastname</label>
   <div class="input-container">
     <input type="text" formControlName="lastname" />
-    <span class="spinner" *ngIf="fg.controls['lastname'].pending"></span>
+    <span class="spinner" *ngIf="lastname.pending"></span>
     <div class="validation-error" *ngIf="lastname.errors?.['required']">
       Field is required
       {{ lastname.errors | json }}
@@ -31,9 +31,30 @@
     Field is required
   </div>
 
+  <!-- password -->
+  <ng-container [formGroupName]="formGroups.passwordGroup">
+    <label>Password</label>
+    <input type="text" formControlName="password" />
+    <div class="validation-error" *ngIf="password.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- confirm password -->
+    <label>Confirm password</label>
+    <input type="text" formControlName="confirmPassword" />
+    <div class="validation-error" *ngIf="confirmPassword.errors?.['required']">
+      Field is required
+    </div>
+    <div
+      class="validation-error"
+      *ngIf="confirmPassword.errors?.['passwordEqual']"
+    >
+      Passwords not match
+    </div>
+  </ng-container>
   <input type="submit" value="Check" style="margin-top: 20px" />
+  <!-- [disabled]="!localForm.valid" -->
 </form>
 <br />
 <hr />
 {{ localForm.value | json }}
-{{ localForm.valid | json }}

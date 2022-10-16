@@ -1,3 +1,4 @@
 # Angular reactive forms
 
-validator, Async Validator, Custom validator
+groups,nested groups,validation messages
+validator, Async Validator, group validator
