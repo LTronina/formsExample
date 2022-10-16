@@ -7,6 +7,7 @@ import {
   AbstractControl,
   ValidationErrors,
   ValidatorFn,
+  FormArray,
 } from '@angular/forms';
 import { delay, map, Observable, of } from 'rxjs';
 
@@ -17,16 +18,22 @@ import { delay, map, Observable, of } from 'rxjs';
 })
 export class AppComponent {
   mainForm: FormGroup;
-  readonly statuses: string[] = ['Dostępny', 'Niedostępny', 'Nieznany'];
+  readonly statuses: string[] = ['Regular', 'Short term', 'Part-time'];
+  readonly privilegeLevel: string[] = ['Good', 'Middle', 'Junior'];
   public readonly fieldNames = {
     firstname: 'firstname',
     lastname: 'lastname',
     status: 'status',
     password: 'password',
     confirmPassword: 'confirmPassword',
+    privilegeLevel: 'privilegeLevel',
+    privilegeTitle: 'privilegeTitle',
   };
 
-  readonly formGroups = { passwordGroup: 'passwordGroup' };
+  readonly formGroups = {
+    passwordGroup: 'passwordGroup',
+    privileges: 'privileges',
+  };
 
   public get firstname(): AbstractControl {
     return this.mainForm.controls[this.fieldNames.firstname];
@@ -48,6 +55,10 @@ export class AppComponent {
       .controls[this.fieldNames.confirmPassword];
   }
 
+  public get privileges(): FormArray {
+    return this.mainForm.controls[this.formGroups.privileges] as FormArray;
+  }
+
   constructor(private fb: FormBuilder) {
     this.mainForm = this.fb.group({
       [this.fieldNames.firstname]: [null, Validators.required],
@@ -57,6 +68,8 @@ export class AppComponent {
         this.lastnameValidator(),
       ],
       [this.fieldNames.status]: [this.statuses[1], Validators.required],
+      [this.formGroups.privileges]: fb.array([]),
+
       [this.formGroups.passwordGroup]: this.fb.group(
         {
           [this.fieldNames.password]: [null, Validators.required],
@@ -70,6 +83,8 @@ export class AppComponent {
         }
       ),
     });
+
+    this.addPrivilege('driving');
   }
 
   submit() {
@@ -77,6 +92,22 @@ export class AppComponent {
       return;
     }
     console.log(this.mainForm.value);
+  }
+
+  addPrivilege(name: string) {
+    var template = this.fb.group({
+      [this.fieldNames.privilegeTitle]: [name, Validators.required],
+      [this.fieldNames.privilegeLevel]: [
+        this.privilegeLevel[1],
+        Validators.required,
+      ],
+    });
+
+    this.privileges.push(template);
+  }
+
+  deletePrivilege(index: number) {
+    this.privileges.removeAt(index);
   }
 
   private lastnameExists(username: string): Observable<boolean> {
