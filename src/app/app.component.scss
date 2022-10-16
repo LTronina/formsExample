@@ -1,0 +1,83 @@
+$input-padding: 3px 5px;
+
+input,
+select {
+  display: block;
+
+  padding: $input-padding;
+  border-radius: 4px;
+  border: 1px solid rgb(190, 188, 188);
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline: 1px solid rgb(38, 38, 38);
+}
+
+input[type="submit"]:hover {
+  background-color: #d5d3d3;
+}
+
+input[type="submit"]:active {
+  outline: 1px solid rgb(38, 38, 38);
+}
+
+label {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 9px;
+  margin-bottom: 3px;
+}
+
+$invalid-color: #7d575f;
+
+.ng-submitted input.ng-invalid,
+.ng-submitted select.ng-invalid {
+  border-color: $invalid-color;
+  border-width: 2px;
+  color: $invalid-color;
+  ~ .validation-error {
+    display: block;
+  }
+}
+
+.validation-error {
+  display: none;
+  color: $invalid-color;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  font-size: 0.7em;
+}
+
+@keyframes spinner-v01 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 30%;
+  right: 6px;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  vertical-align: text-bottom;
+  border: 0.1em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-v01 0.95s linear infinite;
+  animation: spinner-v01 0.95s linear infinite;
+}
+
+// .input--withSpinner {
+//   display: inline-block;
+//   position: relative;
+//   overflow: hidden;
+// }
+
+.input-container {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
