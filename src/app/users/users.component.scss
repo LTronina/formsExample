@@ -1,0 +1,82 @@
+form {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+}
+.leftC {
+  flex: 50%;
+}
+.rightC {
+  flex: 50%;
+}
+
+.leftPriv {
+  flex: 40%;
+}
+
+.middlePriv {
+  flex: 40%;
+  margin-left: 15px;
+  margin-right: 25px;
+}
+
+.rightPriv {
+  flex: 20%;
+  align-self: flex-end;
+}
+
+$invalid-color: #7d575f;
+
+.ng-submitted input.ng-invalid,
+.ng-submitted select.ng-invalid {
+  border-color: $invalid-color;
+  border-width: 2px;
+  color: $invalid-color;
+  ~ .validation-error {
+    display: block;
+  }
+}
+
+.validation-error {
+  display: none;
+  color: $invalid-color;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}
+
+@keyframes spinner-v01 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 30%;
+  right: 6px;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  vertical-align: text-bottom;
+  border: 0.1em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-v01 0.95s linear infinite;
+  animation: spinner-v01 0.95s linear infinite;
+}
+
+// .input--withSpinner {
+//   display: inline-block;
+//   position: relative;
+//   overflow: hidden;
+// }
+
+.input-container {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}

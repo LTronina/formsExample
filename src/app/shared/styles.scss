@@ -1,0 +1,37 @@
+$input-padding: 5px 5px;
+
+input,
+select {
+  display: block;
+
+  padding: $input-padding;
+  border-radius: 4px;
+  border: 1px solid rgb(190, 188, 188);
+  width: 150px;
+  box-sizing: border-box;
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline: 1px solid rgb(38, 38, 38);
+}
+
+input[type="submit"]:hover {
+  background-color: #d5d3d3;
+}
+
+input[type="submit"]:active {
+  outline: 1px solid rgb(38, 38, 38);
+}
+
+label {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 9px;
+  margin-bottom: 3px;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,34 @@
+<div style="margin-left: 80px; max-width: 400px">
+  <h2>Add user</h2>
+
+  <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
+    <!-- status -->
+    <label>Status</label>
+    <select [formControlName]="fieldNames.status">
+      <option [ngValue]="null">Select something</option>
+      <option *ngFor="let item of statuses" [ngValue]="item">
+        {{ item }}
+      </option>
+    </select>
+    <div class="validation-error" *ngIf="status.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- Reason -->
+    <label>Reason</label>
+    <input type="text" [formControlName]="fieldNames.reason" />
+    <div class="validation-error" *ngIf="reason.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- submit -->
+    <div class="form-footer">
+      <input
+        type="submit"
+        value="Submit"
+        style="right: 20px"
+        [disabled]="!localForm.valid"
+      />
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+$invalid-color: #7d575f;
+
+input.ng-invalid,
+select.ng-invalid {
+  border-color: $invalid-color;
+  border-width: 2px;
+  color: $invalid-color;
+  ~ .validation-error {
+    display: block;
+  }
+}
+
+.validation-error {
+  display: none;
+  color: $invalid-color;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}

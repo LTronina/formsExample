@@ -1,0 +1,134 @@
+<div style="margin-left: 80px; max-width: 700px">
+  <h2>Add user</h2>
+
+  <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
+    <div class="container">
+      <div class="leftC">
+        <!-- firstname -->
+        <label>Firstname</label>
+        <input type="text" [formControlName]="fieldNames.firstname" />
+        <div class="validation-error" *ngIf="firstname.errors?.['required']">
+          Field is required
+        </div>
+
+        <!-- lastname -->
+
+        <label>Lastname(try Nest)</label>
+        <div class="input-container">
+          <input type="text" [formControlName]="fieldNames.lastname" />
+          <span class="spinner" *ngIf="lastname.pending"></span>
+          <div class="validation-error" *ngIf="lastname.errors?.['required']">
+            Field is required
+          </div>
+          <div
+            class="validation-error"
+            *ngIf="lastname.errors?.['lastnameExists']"
+          >
+            already exists
+          </div>
+        </div>
+
+        <!-- presence -->
+        <label>Status</label>
+        <select [formControlName]="fieldNames.status">
+          <option [ngValue]="null">Select something</option>
+          <option *ngFor="let item of statuses" [ngValue]="item">
+            {{ item }}
+          </option>
+        </select>
+        <div class="validation-error" *ngIf="status.errors?.['required']">
+          Field is required
+        </div>
+
+        <!-- password -->
+        <ng-container [formGroupName]="formGroups.passwordGroup">
+          <label>Password</label>
+          <input type="text" [formControlName]="fieldNames.password" />
+          <div class="validation-error" *ngIf="password.errors?.['required']">
+            Field is required
+          </div>
+
+          <!-- confirm password -->
+          <label>Confirm password</label>
+          <input type="text" [formControlName]="fieldNames.confirmPassword" />
+          <div
+            class="validation-error"
+            *ngIf="confirmPassword.errors?.['required']"
+          >
+            Field is required
+          </div>
+          <div
+            class="validation-error"
+            *ngIf="confirmPassword.errors?.['passwordEqual']"
+          >
+            Passwords not match
+          </div>
+        </ng-container>
+      </div>
+      <div class="rightC">
+        <ng-container [formArrayName]="formGroups.privileges">
+          <h4>Privileges</h4>
+          <input type="button" value="Add" (click)="addPrivilege('new')" />
+          <ng-container
+            *ngFor="let lessonForm of privileges.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="container">
+              <div class="leftPriv">
+                <!-- privilege name -->
+                <label>Privilege name</label>
+                <input [formControlName]="fieldNames.privilegeTitle" />
+                <div
+                  class="validation-error"
+                  *ngIf="privileges.controls[i].get(fieldNames.privilegeTitle)?.errors?.['required']"
+                >
+                  Field is required
+                </div>
+              </div>
+              <div class="middlePriv">
+                <!-- privilege level -->
+                <label>Privilege level</label>
+                <select [formControlName]="fieldNames.privilegeLevel">
+                  <option [ngValue]="null">Select something</option>
+                  <option *ngFor="let item of privilegeLevel" [ngValue]="item">
+                    {{ item }}
+                  </option>
+                </select>
+                <div
+                  class="validation-error"
+                  *ngIf="privileges.controls[i].get(fieldNames.privilegeLevel)?.errors?.['required']"
+                >
+                  Field is required
+                </div>
+              </div>
+              <div class="rightPriv">
+                <button type="button" (click)="deletePrivilege(i)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <!-- submit -->
+    <div class="form-footer">
+      <input
+        type="submit"
+        value="Add user"
+        style="margin-top: 50px; right: 20px"
+      />
+      <!-- [disabled]="!localForm.valid" -->
+    </div>
+  </form>
+</div>
+
+<!-- debug -->
+<br />
+<br />
+<br />
+
+<div style="max-width: 800px">
+  <p>Debug</p>
+  {{ localForm.value | json }}
+</div>
