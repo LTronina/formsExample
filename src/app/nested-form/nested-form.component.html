@@ -13,60 +13,17 @@
   >
     <div class="container">
       <div class="leftC">
-        <!-- firstname -->
-        <label>Firstname</label>
-        <input type="text" [formControlName]="fieldNames.firstname" />
-        <div class="validation-error" *ngIf="firstname.errors?.['required']">
-          Field is required
-        </div>
-
-        <!-- lastname -->
-
-        <label>Lastname(try Nest)</label>
-        <div class="input-container">
-          <input type="text" [formControlName]="fieldNames.lastname" />
-          <span class="spinner" *ngIf="lastname.pending"></span>
-          <div class="validation-error" *ngIf="lastname.errors?.['required']">
-            Field is required
-          </div>
-          <div
-            class="validation-error"
-            *ngIf="lastname.errors?.['lastnameExists']"
-          >
-            already exists
-          </div>
-        </div>
+        <app-basic-info
+          [formControlName]="formGroups.basicInfo"
+        ></app-basic-info>
       </div>
       <div class="rightC">
-        <!-- firstname -->
-        <label>Firstname</label>
-        <input type="text" [formControlName]="fieldNames.firstname" />
-        <div class="validation-error" *ngIf="firstname.errors?.['required']">
-          Field is required
-        </div>
-
-        <!-- lastname -->
-
-        <label>Lastname(try Nest)</label>
-        <div class="input-container">
-          <input type="text" [formControlName]="fieldNames.lastname" />
-          <span class="spinner" *ngIf="lastname.pending"></span>
-          <div class="validation-error" *ngIf="lastname.errors?.['required']">
-            Field is required
-          </div>
-          <div
-            class="validation-error"
-            *ngIf="lastname.errors?.['lastnameExists']"
-          >
-            already exists
-          </div>
-        </div>
+        <app-adress [formControlName]="formGroups.adress"></app-adress>
       </div>
     </div>
     <!-- submit -->
     <div class="form-footer">
-      <input type="submit" value="Add user" />
-      <!-- [disabled]="!localForm.valid" -->
+      <input type="submit" value="Add user" [disabled]="!localForm.valid" />
     </div>
   </form>
 </div>

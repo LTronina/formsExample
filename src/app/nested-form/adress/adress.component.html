@@ -1,0 +1,28 @@
+<ng-container [formGroup]="mainForm">
+  <!-- street -->
+  <label>Street</label>
+  <div class="input-container">
+    <input type="text" [formControlName]="fieldNames.street" />
+    <div class="validation-error" *ngIf="street.errors?.['required']">
+      Field is required
+    </div>
+  </div>
+
+  <!-- number -->
+  <label>Number</label>
+  <div class="input-container">
+    <input type="number" [formControlName]="fieldNames.number" />
+  </div>
+
+  <!-- postal -->
+  <label>Postal</label>
+  <div class="input-container">
+    <input type="text" [formControlName]="fieldNames.postal" />
+  </div>
+
+  <!--company -->
+  <label>Company</label>
+  <div class="input-container">
+    <input type="text" [formControlName]="fieldNames.company" />
+  </div>
+</ng-container>

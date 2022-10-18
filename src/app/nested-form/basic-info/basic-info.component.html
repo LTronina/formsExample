@@ -1,0 +1,32 @@
+<ng-container [formGroup]="mainForm">
+  <div>
+    <!-- firstname -->
+    <label>Firstname</label>
+    <input type="text" [formControlName]="fieldNames.firstname" />
+    <div class="validation-error" *ngIf="firstname.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- lastname -->
+
+    <label>Lastname</label>
+    <div class="input-container">
+      <input type="text" [formControlName]="fieldNames.lastname" />
+      <div class="validation-error" *ngIf="lastname.errors?.['required']">
+        Field is required
+      </div>
+    </div>
+    <!-- email -->
+
+    <label>Email</label>
+    <div class="input-container">
+      <input type="text" [formControlName]="fieldNames.email" />
+    </div>
+
+    <!-- age -->
+    <label>Age</label>
+    <div class="input-container">
+      <input type="number" [formControlName]="fieldNames.age" />
+    </div>
+  </div>
+</ng-container>

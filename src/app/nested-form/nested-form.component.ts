@@ -1,45 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  Validators,
-  AsyncValidatorFn,
-  FormBuilder,
-  AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
-  FormArray,
-} from '@angular/forms';
-import { delay, map, Observable, of } from 'rxjs';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-nested-form',
   templateUrl: './nested-form.component.html',
-  styleUrls: ['./nested-form.component.scss', './../shared/styles.scss'],
+  styleUrls: [
+    './nested-form.component.scss',
+    './../shared/styles.scss',
+    './nested-form.shared.scss',
+  ],
 })
 export class NestedFormComponent {
   mainForm: FormGroup;
 
   readonly formGroups = {
-    passwordGroup: 'adress',
+    adress: 'adress',
+    basicInfo: 'basicInfo',
   };
 
-  readonly fieldNames = {
-    firstname: 'firstname',
-    lastname: 'lastname',
-  };
-
-  public get firstname(): AbstractControl {
-    return this.mainForm.controls[this.fieldNames.firstname];
-  }
-  public get lastname(): AbstractControl {
-    return this.mainForm.controls[this.fieldNames.lastname];
-  }
+  readonly fieldNames = {};
 
   constructor(private fb: FormBuilder) {
     this.mainForm = this.fb.group(
       {
-        [this.fieldNames.firstname]: ['', Validators.required],
-        [this.fieldNames.lastname]: ['', Validators.required],
+        [this.formGroups.basicInfo]: [],
+        [this.formGroups.adress]: [],
       },
       { updateOn: 'change' }
     );
