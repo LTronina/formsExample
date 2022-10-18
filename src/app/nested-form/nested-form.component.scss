@@ -1,8 +1,7 @@
 $invalid-color: #7d575f;
 
-//dont wait for sumbit ng-submited removed
-input.ng-invalid,
-select.ng-invalid {
+.ng-submitted input.ng-invalid,
+.ng-submitted select.ng-invalid {
   border-color: $invalid-color;
   border-width: 2px;
   color: $invalid-color;

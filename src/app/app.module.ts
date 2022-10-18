@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersModule } from './users/users.module';
 import { DynamicValidatorModule } from './dynamic-validator/dynamic-validator.module';
+import { NestedFormModule } from './nested-form/nested-form.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { DynamicValidatorModule } from './dynamic-validator/dynamic-validator.mo
     UsersModule,
     AppRoutingModule,
     DynamicValidatorModule,
+    NestedFormModule,
   ],
 
   providers: [],

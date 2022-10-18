@@ -1,9 +1,9 @@
 <div style="margin-left: 80px; max-width: 400px">
-  <h2>Add user</h2>
+  <h2>Add status report</h2>
 
   <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
     <!-- status -->
-    <label>Status</label>
+    <label>Status (chose other) </label>
     <select [formControlName]="fieldNames.status">
       <option [ngValue]="null">Select something</option>
       <option *ngFor="let item of statuses" [ngValue]="item">

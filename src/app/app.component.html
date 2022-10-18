@@ -1,8 +1,21 @@
 <div class="nav-header">
   <div class="bar-title">Forms demo app</div>
   <nav>
-    <a class="menu-element" routerLink="/users">Users </a>
-    <a class="menu-element" routerLink="/dynamicValidator">Dynamic validator</a>
+    <a class="menu-element" routerLink="/users" routerLinkActive="active-link"
+      >Form
+    </a>
+    <a
+      class="menu-element"
+      routerLink="/dynamicValidator"
+      routerLinkActive="active-link"
+      >Dynamic validation</a
+    >
+    <a
+      class="menu-element"
+      routerLink="/nestedForm"
+      routerLinkActive="active-link"
+      >Nested frm</a
+    >
   </nav>
 </div>
 <router-outlet></router-outlet>

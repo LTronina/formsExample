@@ -1,5 +1,9 @@
 $input-padding: 5px 5px;
 
+.container {
+  display: flex;
+}
+
 input,
 select {
   display: block;
@@ -34,4 +38,5 @@ label {
 .form-footer {
   display: flex;
   justify-content: flex-end;
+  margin-top: 120px;
 }
