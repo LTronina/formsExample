@@ -1,15 +1,42 @@
-a {
-  color: white;
-}
-
-h1 {
-  letter-spacing: 0px;
-  text-transform: uppercase;
-}
+$headerHeight: 45px;
 
 .nav-header {
-  background-color: rgb(243, 184, 74);
-  padding: 5px 20px;
+  background-color: #f3b84a;
+  padding: 0px 20px;
   color: white;
   width: 800px;
+  height: $headerHeight;
+}
+
+.bar-title {
+  display: inline-block;
+  font-size: 30px;
+  line-height: $headerHeight;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  vertical-align: top;
+}
+
+nav {
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  margin-left: 40px;
+  background-color: #f3644a;
+}
+
+.menu-element {
+  color: white;
+  height: 100%;
+  // background-color: #4a85f3;
+  display: inline-block;
+
+  text-decoration: none;
+  line-height: $headerHeight;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.menu-element:hover {
+  background-color: #de5b44;
 }
