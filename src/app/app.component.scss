@@ -1,14 +1,14 @@
-$headerHeight: 45px;
+$headerHeight: 55px;
 $barColor: #003566;
-$menuColor: #ffd60a;
+$menuColor: #003566;
 $menuHover: #ffc300;
 $menuSelected: $menuHover;
+$barFontColor: white;
 
 .nav-header {
   background-color: $barColor;
   padding: 0px 20px;
-  color: white;
-  width: 800px;
+  color: $barFontColor;
   height: $headerHeight;
 }
 
@@ -31,7 +31,7 @@ nav {
 }
 
 .menu-element {
-  color: $barColor;
+  color: $barFontColor;
   font-weight: 600;
   height: 100%;
   display: inline-block;

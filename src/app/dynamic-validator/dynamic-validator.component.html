@@ -1,7 +1,16 @@
-<div style="margin-left: 80px; max-width: 400px">
-  <h2>Add status report</h2>
-
-  <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 400px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>Add status report</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
     <!-- status -->
     <label>Status (chose other) </label>
     <select [formControlName]="fieldNames.status">

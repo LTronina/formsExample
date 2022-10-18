@@ -1,7 +1,16 @@
-<div style="margin-left: 80px; margin-top: 100px; max-width: 700px">
-  <h2>ADD USER</h2>
-
-  <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 700px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>ADD USER</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
     <div class="container">
       <div class="leftC">
         <!-- firstname -->

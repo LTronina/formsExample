@@ -14,7 +14,7 @@ import { delay, map, Observable, of } from 'rxjs';
 @Component({
   selector: 'app-nested-form',
   templateUrl: './nested-form.component.html',
-  styleUrls: ['./nested-form.component.scss'],
+  styleUrls: ['./nested-form.component.scss', './../shared/styles.scss'],
 })
 export class NestedFormComponent {
   mainForm: FormGroup;

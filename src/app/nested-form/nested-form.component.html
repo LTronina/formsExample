@@ -1,7 +1,16 @@
-<div style="margin-left: 80px; margin-top: 100px; max-width: 700px">
-  <h2>ADD USER</h2>
-
-  <form [formGroup]="mainForm" (ngSubmit)="submit()" #localForm="ngForm">
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 700px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>Nested form</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
     <div class="container">
       <div class="leftC">
         <!-- firstname -->
@@ -13,7 +22,7 @@
 
         <!-- lastname -->
 
-        <label>Lastname</label>
+        <label>Lastname(try Nest)</label>
         <div class="input-container">
           <input type="text" [formControlName]="fieldNames.lastname" />
           <span class="spinner" *ngIf="lastname.pending"></span>
@@ -28,7 +37,31 @@
           </div>
         </div>
       </div>
-      <div class="rightC"></div>
+      <div class="rightC">
+        <!-- firstname -->
+        <label>Firstname</label>
+        <input type="text" [formControlName]="fieldNames.firstname" />
+        <div class="validation-error" *ngIf="firstname.errors?.['required']">
+          Field is required
+        </div>
+
+        <!-- lastname -->
+
+        <label>Lastname(try Nest)</label>
+        <div class="input-container">
+          <input type="text" [formControlName]="fieldNames.lastname" />
+          <span class="spinner" *ngIf="lastname.pending"></span>
+          <div class="validation-error" *ngIf="lastname.errors?.['required']">
+            Field is required
+          </div>
+          <div
+            class="validation-error"
+            *ngIf="lastname.errors?.['lastnameExists']"
+          >
+            already exists
+          </div>
+        </div>
+      </div>
     </div>
     <!-- submit -->
     <div class="form-footer">
