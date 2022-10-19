@@ -1,0 +1,74 @@
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 700px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>Create form from config</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
+    <div class="container">
+      <div class="leftC">
+        <label>Configuration</label>
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="20"
+          [value]="defaultConfig | json"
+        ></textarea>
+        <!-- (ngModelChange)="objectChange($event)" -->
+        <!-- [ngModel]="config | json" -->
+      </div>
+      <div class="rightC">
+        <!-- lastname -->
+
+        <label>Lastname(try Nest)</label>
+        <div class="input-container">
+          <input type="text" [formControlName]="fieldNames.lastname" />
+          <span class="spinner" *ngIf="lastname.pending"></span>
+          <div class="validation-error" *ngIf="lastname.errors?.['required']">
+            Field is required
+          </div>
+          <div
+            class="validation-error"
+            *ngIf="lastname.errors?.['lastnameExists']"
+          >
+            already exists
+          </div>
+        </div>
+
+        <!-- presence -->
+        <label>Status</label>
+        <select [formControlName]="fieldNames.status">
+          <option [ngValue]="null">Select something</option>
+          <option *ngFor="let item of statuses" [ngValue]="item">
+            {{ item }}
+          </option>
+        </select>
+        <div class="validation-error" *ngIf="status.errors?.['required']">
+          Field is required
+        </div>
+      </div>
+    </div>
+    <!-- submit -->
+    <div class="form-footer">
+      <input type="submit" value="Add user" />
+      <!-- [disabled]="!localForm.valid" -->
+    </div>
+  </form>
+</div>
+
+<!-- debug -->
+<br />
+<br />
+<br />
+
+<div style="max-width: 800px">
+  <p>Debug</p>
+  {{ localForm.value | json }}
+</div>

@@ -7,14 +7,14 @@ $barFontColor: white;
 
 .nav-header {
   background-color: $barColor;
-  padding: 0px 20px;
+  padding: 0px 18px;
   color: $barFontColor;
   height: $headerHeight;
 }
 
 .bar-title {
   display: inline-block;
-  font-size: 26px;
+  font-size: 20px;
   line-height: $headerHeight;
   text-transform: uppercase;
   letter-spacing: 0px;
@@ -40,7 +40,7 @@ nav {
   line-height: $headerHeight;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .menu-element:hover {

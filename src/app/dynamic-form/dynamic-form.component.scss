@@ -1,0 +1,31 @@
+form {
+  width: 100%;
+}
+
+.leftC {
+  flex: 30%;
+  padding: 0px 30px 10px 10px;
+}
+.rightC {
+  flex: 70%;
+}
+
+$invalid-color: #7d575f;
+
+.ng-submitted input.ng-invalid,
+.ng-submitted select.ng-invalid {
+  border-color: $invalid-color;
+  border-width: 2px;
+  color: $invalid-color;
+  ~ .validation-error {
+    display: block;
+  }
+}
+
+.validation-error {
+  display: none;
+  color: $invalid-color;
+  margin-top: 1px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}

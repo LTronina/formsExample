@@ -13,10 +13,10 @@ import { delay, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss', './../shared/styles.scss'],
+  templateUrl: './array-form.component.html',
+  styleUrls: ['./array-form.component.scss', './../shared/styles.scss'],
 })
-export class UsersComponent {
+export class ArrayFormComponent {
   mainForm: FormGroup;
   readonly statuses: string[] = ['Regular', 'Short term', 'Part-time'];
   readonly privilegeLevel: string[] = ['Good', 'Middle', 'Junior'];
