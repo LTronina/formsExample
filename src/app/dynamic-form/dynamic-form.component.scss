@@ -12,8 +12,9 @@ form {
 
 $invalid-color: #7d575f;
 
-.ng-submitted input.ng-invalid,
-.ng-submitted select.ng-invalid {
+input.ng-invalid,
+select.ng-invalid,
+textarea.ng-invalid {
   border-color: $invalid-color;
   border-width: 2px;
   color: $invalid-color;
@@ -28,4 +29,8 @@ $invalid-color: #7d575f;
   margin-top: 1px;
   margin-bottom: 5px;
   font-size: 0.8rem;
+}
+
+.card-body {
+  width: 100%;
 }

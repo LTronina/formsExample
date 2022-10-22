@@ -1,30 +1,24 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit } from "@angular/core";
 import {
   FormGroup,
   Validators,
-  AsyncValidatorFn,
   FormBuilder,
   AbstractControl,
   ValidationErrors,
-  ValidatorFn,
-  FormArray,
-  FormGroupDirective,
-  ControlValueAccessor,
-  Validator,
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
-} from '@angular/forms';
-import { delay, map, Observable, of } from 'rxjs';
+} from "@angular/forms";
+import { delay, map, Observable, of } from "rxjs";
 type ChangeCallbackFn<T> = (value: T) => void;
 type TouchCallbackFn = () => void;
 
 @Component({
-  selector: 'app-adress',
-  templateUrl: './adress.component.html',
+  selector: "app-adress",
+  templateUrl: "./adress.component.html",
   styleUrls: [
-    './adress.component.scss',
-    './../../shared/styles.scss',
-    './../nested-form.shared.scss',
+    "./adress.component.scss",
+    "./../../shared/styles.scss",
+    "./../nested-form.shared.scss",
   ],
   providers: [
     {
@@ -51,26 +45,26 @@ export class AdressComponent implements OnInit {
   }
 
   readonly formGroups = {
-    adress: 'adress',
+    adress: "adress",
   };
 
   readonly fieldNames = {
-    street: 'street',
-    number: 'number',
-    postal: 'postal',
-    company: 'company',
+    street: "street",
+    number: "number",
+    postal: "postal",
+    company: "company",
   };
 
   constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
     this.mainForm = this.fb.group(
       {
-        [this.fieldNames.street]: ['', Validators.required],
+        [this.fieldNames.street]: ["", Validators.required],
         [this.fieldNames.number]: [],
         [this.fieldNames.postal]: [],
         [this.fieldNames.company]: [],
       },
-      { updateOn: 'change' }
+      { updateOn: "change" }
     );
 
     console.log(this.mainForm.value);
@@ -83,7 +77,7 @@ export class AdressComponent implements OnInit {
       return null;
     }
     return {
-      invalidForm: { valid: false, message: 'addressForm fields are invalid' },
+      invalidForm: { valid: false, message: "addressForm fields are invalid" },
     };
   }
 

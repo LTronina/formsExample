@@ -1,29 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
 import {
   FormGroup,
   Validators,
-  AsyncValidatorFn,
   FormBuilder,
   AbstractControl,
-  ValidationErrors,
-  ValidatorFn,
-  FormArray,
-} from '@angular/forms';
-import { delay, map, Observable, of } from 'rxjs';
+} from "@angular/forms";
 
 @Component({
-  selector: 'app-dynamic-validator',
-  templateUrl: './dynamic-validator.component.html',
-  styleUrls: ['./dynamic-validator.component.scss', './../shared/styles.scss'],
+  selector: "app-dynamic-validator",
+  templateUrl: "./dynamic-validator.component.html",
+  styleUrls: ["./dynamic-validator.component.scss", "./../shared/styles.scss"],
 })
 export class DynamicValidatorComponent {
   mainForm: FormGroup;
-  readonly statuses: string[] = ['Regular', 'Short term', 'Other'];
+  readonly statuses: string[] = ["Regular", "Short term", "Other"];
 
   public readonly fieldNames = {
-    reason: 'reason',
+    reason: "reason",
 
-    status: 'status',
+    status: "status",
   };
 
   public get status(): AbstractControl {
@@ -40,7 +35,7 @@ export class DynamicValidatorComponent {
         [this.fieldNames.status]: [this.statuses[1], Validators.required],
         [this.fieldNames.reason]: [null],
       },
-      { updateOn: 'change' }
+      { updateOn: "change" }
     );
 
     this.status?.valueChanges.subscribe((x) => {

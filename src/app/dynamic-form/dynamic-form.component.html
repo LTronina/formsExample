@@ -19,40 +19,47 @@
           id=""
           cols="30"
           rows="20"
-          [value]="defaultConfig | json"
+          [formControlName]="fieldNames.config"
         ></textarea>
-        <!-- (ngModelChange)="objectChange($event)" -->
-        <!-- [ngModel]="config | json" -->
+
+        <div class="validation-error" *ngIf="config.errors?.['validJSON']">
+          Not a JSON
+        </div>
       </div>
       <div class="rightC">
-        <!-- lastname -->
-
-        <label>Lastname(try Nest)</label>
-        <div class="input-container">
-          <input type="text" [formControlName]="fieldNames.lastname" />
-          <span class="spinner" *ngIf="lastname.pending"></span>
-          <div class="validation-error" *ngIf="lastname.errors?.['required']">
-            Field is required
-          </div>
+        <ng-container
+          *ngFor="let item of parsedConfig"
+          [ngSwitch]="item.controlType"
+        >
+          <label for="">{{ item.name }}</label>
+          <input
+            *ngSwitchCase="'text'"
+            type="text"
+            [formControlName]="item.name"
+          />
           <div
             class="validation-error"
-            *ngIf="lastname.errors?.['lastnameExists']"
+            *ngIf="mainForm .get(item.name)?.errors?.['required']"
           >
-            already exists
+            Field is required
           </div>
-        </div>
 
-        <!-- presence -->
-        <label>Status</label>
-        <select [formControlName]="fieldNames.status">
-          <option [ngValue]="null">Select something</option>
-          <option *ngFor="let item of statuses" [ngValue]="item">
-            {{ item }}
-          </option>
-        </select>
-        <div class="validation-error" *ngIf="status.errors?.['required']">
-          Field is required
-        </div>
+          <select [formControlName]="item.name" *ngSwitchCase="'select'">
+            <option [ngValue]="null">Select something</option>
+            <option
+              *ngFor="let item of item.selectDetails?.options"
+              [ngValue]="item"
+            >
+              {{ item }}
+            </option>
+          </select>
+          <div
+            class="validation-error"
+            *ngIf="mainForm .get(item.name)?.errors?.['required']"
+          >
+            Field is required
+          </div>
+        </ng-container>
       </div>
     </div>
     <!-- submit -->
