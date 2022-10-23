@@ -1,0 +1,32 @@
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 400px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>Add status report</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
+    <!-- Reason -->
+    <label>Reason</label>
+    <input type="text" [formControlName]="fieldNames.reason" />
+    <div class="validation-error" *ngIf="reason.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- submit -->
+    <div class="form-footer">
+      <input
+        type="submit"
+        value="Submit"
+        style="right: 20px"
+        [disabled]="!localForm.valid"
+      />
+    </div>
+    dirty?: {{ mainForm.dirty }}
+  </form>
+</div>

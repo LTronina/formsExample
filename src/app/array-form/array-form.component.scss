@@ -26,8 +26,8 @@ form {
 
 $invalid-color: #7d575f;
 
-.ng-submitted input.ng-invalid,
-.ng-submitted select.ng-invalid {
+input.ng-invalid,
+select.ng-invalid {
   border-color: $invalid-color;
   border-width: 2px;
   color: $invalid-color;

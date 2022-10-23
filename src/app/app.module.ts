@@ -8,6 +8,7 @@ import { DynamicValidatorModule } from "./dynamic-validator/dynamic-validator.mo
 import { NestedFormModule } from "./nested-form/nested-form.module";
 import { DynamicFormModule } from "./dynamic-form/dynamic-form.module";
 import { JsonPipe } from "@angular/common";
+import { WithDeactivateModule } from "./with-deactivate/with-deactivate.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { JsonPipe } from "@angular/common";
     DynamicValidatorModule,
     NestedFormModule,
     DynamicFormModule,
+    WithDeactivateModule,
   ],
 
   providers: [JsonPipe],
