@@ -1,0 +1,8 @@
+<label>{{ desription }}</label>
+<input
+  type="text"
+  [ngModel]="value"
+  (ngModelChange)="onChange($event)"
+  (blur)="onTouched()"
+  [disabled]="disabled"
+/>

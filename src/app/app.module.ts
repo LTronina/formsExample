@@ -9,6 +9,7 @@ import { NestedFormModule } from "./nested-form/nested-form.module";
 import { DynamicFormModule } from "./dynamic-form/dynamic-form.module";
 import { JsonPipe } from "@angular/common";
 import { WithDeactivateModule } from "./with-deactivate/with-deactivate.module";
+import { CustomFormControlModule } from "./custom-form-control/custom-form-control.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { WithDeactivateModule } from "./with-deactivate/with-deactivate.module";
     NestedFormModule,
     DynamicFormModule,
     WithDeactivateModule,
+    CustomFormControlModule,
   ],
 
   providers: [JsonPipe],

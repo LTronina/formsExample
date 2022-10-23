@@ -1,0 +1,44 @@
+<div
+  style="margin-left: 80px; margin-top: 100px; max-width: 400px"
+  class="card"
+>
+  <div class="card-head">
+    <h2>With custom form controls</h2>
+  </div>
+  <form
+    [formGroup]="mainForm"
+    (ngSubmit)="submit()"
+    #localForm="ngForm"
+    class="card-body"
+  >
+    <!-- firstname -->
+    <app-custom-input
+      [desription]="fieldNames.firstname"
+      [formControlName]="fieldNames.firstname"
+    ></app-custom-input>
+    <div class="validation-error" *ngIf="firstname.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- lastname -->
+    <app-custom-input
+      [formControlName]="fieldNames.lastname"
+      [desription]="fieldNames.lastname"
+    ></app-custom-input>
+    <div class="validation-error" *ngIf="lastname.errors?.['required']">
+      Field is required
+    </div>
+
+    <!-- submit -->
+    <div class="form-footer">
+      <input
+        type="submit"
+        value="Submit"
+        style="right: 20px"
+        [disabled]="!localForm.valid"
+      />
+    </div>
+    debug:
+    <pre> {{ mainForm.value | json }} </pre>
+  </form>
+</div>

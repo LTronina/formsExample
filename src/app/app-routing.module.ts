@@ -6,6 +6,7 @@ import { NestedFormComponent } from "./nested-form/nested-form.component";
 import { ArrayFormComponent } from "./array-form/array-form.component";
 import { WithDeactivateComponent } from "./with-deactivate/with-deactivate.component";
 import { GenericDeactivateGuard } from "./shared/generic-deactivate.guard";
+import { CustomFormControlComponent } from "./custom-form-control/custom-form-control.component";
 
 const routes: Routes = [
   { path: "users", component: ArrayFormComponent },
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: "withDeactivateForm",
     component: WithDeactivateComponent,
     canDeactivate: [GenericDeactivateGuard],
+  },
+  {
+    path: "customFormControl",
+    component: CustomFormControlComponent,
+    title: "Form with custom user controls",
   },
   { path: "", redirectTo: "/users", pathMatch: "full" },
 ];
