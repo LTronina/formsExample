@@ -7,6 +7,7 @@ import { ArrayFormComponent } from "./array-form/array-form.component";
 import { WithDeactivateComponent } from "./with-deactivate/with-deactivate.component";
 import { GenericDeactivateGuard } from "./shared/generic-deactivate.guard";
 import { CustomFormControlComponent } from "./custom-form-control/custom-form-control.component";
+import { TypedFormComponent } from "./typed-form/typed-form.component";
 
 const routes: Routes = [
   { path: "users", component: ArrayFormComponent },
@@ -23,6 +24,12 @@ const routes: Routes = [
     component: CustomFormControlComponent,
     title: "Form with custom user controls",
   },
+  {
+    path: "typedForm",
+    component: TypedFormComponent,
+    title: "typed form",
+  },
+
   { path: "", redirectTo: "/users", pathMatch: "full" },
 ];
 

@@ -10,6 +10,7 @@ import { DynamicFormModule } from "./dynamic-form/dynamic-form.module";
 import { JsonPipe } from "@angular/common";
 import { WithDeactivateModule } from "./with-deactivate/with-deactivate.module";
 import { CustomFormControlModule } from "./custom-form-control/custom-form-control.module";
+import { TypedFormModule } from "./typed-form/typed-form.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { CustomFormControlModule } from "./custom-form-control/custom-form-contr
     DynamicFormModule,
     WithDeactivateModule,
     CustomFormControlModule,
+    TypedFormModule,
   ],
 
   providers: [JsonPipe],
