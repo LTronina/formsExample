@@ -5,33 +5,27 @@
   <div class="card-head">
     <h2>ADD USER</h2>
   </div>
-  <form
-    class="card-body"
-    action=""
-    [noValidate]=""
-    (ngSubmit)="onSubmit()"
-    [formGroup]="mainForm"
-  >
+  <form class="card-body" action="" [noValidate]="" [formGroup]="mainForm">
     <label>Firstname</label>
-    <input type="text" formControlName="lastname" />
+    <input type="text" [formControlName]="formFields.firstname" />
     <div class="validation-error" *ngIf="firstname.errors?.['required']">
       Required
     </div>
 
     <label>Lastname</label>
-    <input type="text" formControlName="lastname" />
+    <input type="text" [formControlName]="formFields.lastname" />
     <div class="validation-error" *ngIf="lastname.errors?.['required']">
       Required
     </div>
 
     <label>Age</label>
-    <input type="number" formControlName="age" />
+    <input type="number" [formControlName]="formFields.age" />
     <div class="validation-error" *ngIf="age.errors?.['required']">
       Required
     </div>
 
     <label>Sex</label>
-    <select formControlName="sex">
+    <select [formControlName]="formFields.sex">
       <option [ngValue]="null">Select something</option>
       <option *ngFor="let item of sexTypes" [ngValue]="item">
         {{ item }}
@@ -42,8 +36,10 @@
     </div>
 
     <div class="card-footer">
-      <button type="submit" [disabled]="!mainForm.valid">Save</button>
-      <button (reset)="reset()">Reset</button>
+      <button (click)="onSubmit()" type="submit" [disabled]="!mainForm.valid">
+        Save
+      </button>
+      <button (click)="onReset()">Reset</button>
     </div>
   </form>
 </div>

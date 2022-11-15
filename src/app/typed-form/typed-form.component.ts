@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { Component } from "@angular/core";
+import { AbstractControl, FormBuilder, Validators } from "@angular/forms";
 import { fields } from "../shared/functions";
 
-import { IAddUserForm, sexType, sexTypes } from "./IAddUserForm";
+import {
+  IAddUserForm,
+  IAddUserFormFields,
+  sexType,
+  sexTypes,
+} from "./IAddUserForm";
 
 @Component({
   selector: "app-typed-form",
@@ -16,14 +16,8 @@ import { IAddUserForm, sexType, sexTypes } from "./IAddUserForm";
 })
 export class TypedFormComponent {
   mainForm!: IAddUserForm;
+  formFields = fields<IAddUserFormFields>();
   sexTypes = sexTypes;
-
-  onSubmit() {
-    //   throw new Error("Method not implemented.");
-  }
-  reset() {
-    // throw new Error("Method not implemented.");
-  }
 
   public get firstname(): AbstractControl {
     return this.mainForm.controls.firstname;
@@ -48,17 +42,20 @@ export class TypedFormComponent {
       sex: this.fb.nonNullable.control<sexType>("male", [Validators.required]),
     });
   }
-  ngOnInit(): void {
-    // throw new Error("Method not implemented.");
+
+  onReset() {
+    this.mainForm.reset();
+    this.mainForm.valid;
   }
+
   canDeactivate(): boolean {
     return !this.mainForm.dirty;
   }
 
-  submit() {
+  onSubmit() {
+    console.log(this.mainForm.value);
     if (this.mainForm.invalid) {
       return;
     }
-    console.log(this.mainForm.value);
   }
 }
